@@ -9,7 +9,9 @@ class Ship(val length: Int, val breadth: Int) {
         healthMeter[coordinateX - 1][coordinateY - 1]--
     }
 
-    fun isDestroyed(): Boolean = healthMeter.all { areAllPositionsAttacked(it) }
+    fun isDestroyed(): Boolean = healthMeter.all {
+        areAllPositionsAttacked(it)
+    }
 
     fun healthFor(coordinateX: Int, coordinateY: Int): Int {
         return healthMeter[coordinateX - 1][coordinateY - 1]
