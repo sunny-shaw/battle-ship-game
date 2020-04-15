@@ -1,5 +1,5 @@
 import io.kotlintest.shouldBe
-import io.kotlintest.specs.Test
+import org.junit.jupiter.api.Test
 
 class ShipTest {
     private val length = 1
