@@ -1,6 +1,5 @@
 package component
 
-import component.Ship
 import io.kotlintest.shouldBe
 import org.junit.jupiter.api.Test
 
