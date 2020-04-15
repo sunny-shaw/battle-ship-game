@@ -1,3 +1,5 @@
+package component
+
 class Ship(val length: Int, val breadth: Int) {
     private var health: Int
 

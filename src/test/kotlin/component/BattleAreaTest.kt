@@ -1,3 +1,5 @@
+package component
+
 import io.kotlintest.shouldBe
 import org.junit.jupiter.api.Test
 

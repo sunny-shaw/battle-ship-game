@@ -1,3 +1,5 @@
+package component
+
 class BattleArea(val length: Int, val breadth: Int, val array: Array<Array<Ship?>>) {
 
     companion object {
@@ -17,7 +19,7 @@ class BattleArea(val length: Int, val breadth: Int, val array: Array<Array<Ship?
             for (startIndex in 0 until array.size - shipLength + 1) {
                 if (spaceAvailable(startIndex, ship)) {
                     occupySpace(startIndex, ship)
-                    println("Ship is placed successfully in the Battle Area!! The war is on...")
+                    println("component.Ship is placed successfully in the Battle Area!! The war is on...")
                     return true
                 }
             }
