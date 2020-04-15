@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test
 
 class BattleAreaTest {
     @Test
-    fun `should return a battle area of size 1 X 2 with initial cell value 0 representing not occupied`() {
+    fun `should return a battle area of size 1 X 2 with initial cell value null representing not occupied`() {
         val length = 1
         val breadth = 2
 
         val battleArea = BattleArea(length, breadth)
 
-        battleArea[1,1] shouldBe 0
-        battleArea[1,2] shouldBe 0
+        battleArea[1,1] shouldBe null
+        battleArea[1,2] shouldBe null
     }
 
     @Test
@@ -24,10 +24,10 @@ class BattleAreaTest {
         val isPlaced = battleArea.place(ship)
 
         isPlaced shouldBe true
-        battleArea[1,1] shouldBe 1
-        battleArea[1,2] shouldBe 1
-        battleArea[2,1] shouldBe 1
-        battleArea[2,2] shouldBe 1
+        battleArea[1,1]!!.javaClass shouldBe Ship::class.java
+        battleArea[1,2]!!.javaClass shouldBe Ship::class.java
+        battleArea[2,1]!!.javaClass shouldBe Ship::class.java
+        battleArea[2,2]!!.javaClass shouldBe Ship::class.java
     }
 
     @Test
