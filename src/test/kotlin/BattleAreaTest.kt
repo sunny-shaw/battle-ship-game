@@ -1,5 +1,6 @@
+import io.kotlintest.shouldBe
 import org.junit.jupiter.api.Test
-import kotlin.test.assertEquals
+
 
 class BattleAreaTest {
     @Test
@@ -9,8 +10,8 @@ class BattleAreaTest {
 
         val battleArea = BattleArea(length, breadth)
 
-        assertEquals(0, battleArea[1,1])
-        assertEquals(0, battleArea[1,2])
+        battleArea[1,1] shouldBe 0
+        battleArea[1,2] shouldBe 0
     }
 
     @Test
@@ -22,11 +23,11 @@ class BattleAreaTest {
 
         val isPlaced = battleArea.place(ship)
 
-        assertEquals(true , isPlaced)
-        assertEquals(1, battleArea[1,1])
-        assertEquals(1, battleArea[1,2])
-        assertEquals(1, battleArea[2,1])
-        assertEquals(1, battleArea[2,2])
+        isPlaced shouldBe true
+        battleArea[1,1] shouldBe 1
+        battleArea[1,2] shouldBe 1
+        battleArea[2,1] shouldBe 1
+        battleArea[2,2] shouldBe 1
     }
 
     @Test
@@ -38,6 +39,6 @@ class BattleAreaTest {
 
         val isPlaced = battleArea.place(ship)
 
-        assertEquals(false , isPlaced)
+        isPlaced shouldBe false
     }
 }
