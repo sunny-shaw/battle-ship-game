@@ -1,26 +1,19 @@
 class Ship(val length: Int, val breadth: Int) {
-    private var healthMeter: Array<Array<Int>>
+    private var health: Int
 
     init {
-        healthMeter = Array(length) { Array(breadth) { INITIAL_HEALTH } }
+        health = length * breadth * HEALTH_FACTOR
     }
 
-    fun reduceHealthFor(coordinateX: Int, coordinateY: Int) {
-        healthMeter[coordinateX - 1][coordinateY - 1]--
-    }
+    fun reduceHealth() = health--
 
-    fun isDestroyed(): Boolean = healthMeter.all {
-        areAllPositionsAttacked(it)
-    }
+    fun isDestroyed(): Boolean = health == 0
 
-    fun healthFor(coordinateX: Int, coordinateY: Int): Int {
-        return healthMeter[coordinateX - 1][coordinateY - 1]
+    fun health(): Int {
+        return health
     }
-
-    private fun areAllPositionsAttacked(positionArray: Array<Int>) = positionArray.all { it == NO_HEALTH }
 
     companion object {
-        private const val INITIAL_HEALTH = 1
-        private const val NO_HEALTH = 0
+        private const val HEALTH_FACTOR = 1
     }
 }

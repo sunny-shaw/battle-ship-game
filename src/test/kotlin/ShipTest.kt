@@ -14,37 +14,25 @@ class ShipTest {
     }
 
     @Test
-    fun `should initialise health value for all positions when ship is created`() {
+    fun `should initialise health value when ship is created`() {
         val ship = Ship(2, 3)
 
-        ship.healthFor(1,1) shouldBe 1
-        ship.healthFor(1,2) shouldBe 1
-        ship.healthFor(1,3) shouldBe 1
-        ship.healthFor(2,1) shouldBe 1
-        ship.healthFor(2,2) shouldBe 1
-        ship.healthFor(2,3) shouldBe 1
-    }
-
-    @Test
-    fun `should return health value for given position coordinates`() {
-        val ship = Ship(length, breadth)
-
-        ship.healthFor(1,1) shouldBe 1
+        ship.health() shouldBe 6
     }
 
     @Test
     fun `should reduce health with value 1 for specific position`() {
         val ship = Ship(length, breadth)
 
-        ship.reduceHealthFor(1,1)
+        ship.reduceHealth()
 
-        ship.healthFor(1,1) shouldBe 0
+        ship.health() shouldBe 0
     }
 
     @Test
-    fun `should return true if all positions health is zero`() {
+    fun `should return true if health is zero`() {
         val ship = Ship(1, 1)
-        ship.reduceHealthFor(1,1)
+        ship.reduceHealth()
 
         val isDestroyed = ship.isDestroyed()
 
