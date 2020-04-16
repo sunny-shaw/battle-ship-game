@@ -19,6 +19,8 @@ class GameController(private val inputReader: BufferedReader) {
         println("Enter number of ships and their size in AxB for Player$playerId")
         val numberOfShips = inputReader.readLine().toInt()
         for (each in 1..numberOfShips) {
+            println("                     ______||___")
+            println("Enter ship dimension \\_________/")
             val (length, breadth) = inputReader.readLine().split(" ")
 
             ships.add(Ship(length.toInt(), breadth.toInt()))

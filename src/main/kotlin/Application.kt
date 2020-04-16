@@ -29,15 +29,10 @@ fun main() {
     while (!battleArea1.areAllShipsDestroyed() && !battleArea2.areAllShipsDestroyed()) {
         val targetPosition = currentPlayer.fireMissile()
 
-        when (nextPlayer.confirmAttack(targetPosition)) {
-            Action.MISS -> {
-                previousPlayer = currentPlayer
-                currentPlayer = nextPlayer
-                nextPlayer = previousPlayer
-            }
-            Action.HIT -> {
-                println("Player${currentPlayer.id} will continue playing...")
-            }
+        if (nextPlayer.confirmAttack(targetPosition) == Action.MISS) {
+            previousPlayer = currentPlayer
+            currentPlayer = nextPlayer
+            nextPlayer = previousPlayer
         }
     }
     println("HURRAY.... Player${currentPlayer.id} wins the game !! ")
@@ -47,4 +42,5 @@ private fun placeShip(shipsForPlayer1: List<Ship>, battleArea1: BattleArea) {
     shipsForPlayer1.forEach {
         battleArea1.place(it)
     }
+    println("Ship is placed successfully in the Battle Area!! The war is on...")
 }

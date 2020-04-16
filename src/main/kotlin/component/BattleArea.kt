@@ -21,7 +21,6 @@ class BattleArea(private val length: Int, private val breadth: Int, private val 
         for (startIndex in 0 until array.size - shipLength + 1) {
             if (spaceAvailable(startIndex, ship)) {
                 occupySpace(startIndex, ship)
-                println("Ship is placed successfully in the Battle Area!! The war is on...")
                 return true
             }
         }
