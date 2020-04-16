@@ -9,6 +9,7 @@ class Player(
     private val inputReader: BufferedReader
 ) {
     fun fireMissile(): String {
+        println("Player$id - fire the missile")
         return inputReader.readLine()
     }
 

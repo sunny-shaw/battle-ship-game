@@ -6,24 +6,22 @@ import component.Ship
 import java.io.BufferedReader
 
 class GameController(private val inputReader: BufferedReader) {
-    private var battleAreaLength = 0
-    private var battleAreaBreadth = 0
 
-    fun askBattleAreaSize() {
-        println("Enter size of the battle area MxN?")
-        battleAreaLength = inputReader.readInt()
-        battleAreaBreadth = inputReader.readInt()
-        println("Battle Area created of size $battleAreaLength X $battleAreaBreadth")
+    fun initializeBattleArea(playerId: Int): BattleArea {
+        println("Enter size of the battle area MxN for Player$playerId")
+        val (length, breadth) = inputReader.readLine().split(" ")
+
+        return BattleArea(breadth.toInt(), length.toInt())
     }
 
-    fun askShipInfo(): List<Ship> {
+    fun initializeShip(playerId: Int): List<Ship> {
         val ships = mutableListOf<Ship>()
-        println("Enter number of ships and their size in AxB")
-        val numberOfShips = inputReader.readInt()
+        println("Enter number of ships and their size in AxB for Player$playerId")
+        val numberOfShips = inputReader.readLine().toInt()
         for (each in 1..numberOfShips) {
-            val shipLength = inputReader.readInt()
-            val shipBreadth = inputReader.readInt()
-            ships.add(Ship(shipLength, shipBreadth))
+            val (length, breadth) = inputReader.readLine().split(" ")
+
+            ships.add(Ship(length.toInt(), breadth.toInt()))
         }
         return ships
     }
@@ -41,8 +39,4 @@ class GameController(private val inputReader: BufferedReader) {
     fun initializePlayer(id: Int, battleArea: BattleArea): Player {
         return Player(id, battleArea, inputReader)
     }
-}
-
-fun BufferedReader.readInt(): Int {
-    return this.readLine().toInt()
 }

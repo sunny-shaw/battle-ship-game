@@ -30,35 +30,32 @@ class GameControllerTest {
     }
 
     @Test
-    fun `should ask user input for battle area size`() {
-        every { inputReader.readLine() } returns "2" andThen "3"
+    fun `should initialize battle area`() {
+        every { inputReader.readLine() } returns "2 3"
 
-        game.askBattleAreaSize()
+        val battleArea = game.initializeBattleArea(1)
 
-        verify(exactly = 2) { inputReader.readLine() }
+        battleArea.javaClass shouldBe BattleArea::class.java
+        verify(exactly = 1) { inputReader.readLine() }
     }
 
     @Test
     fun `should ask user input for number of ships and their sizes`() {
-        every { inputReader.readLine() } returns "2"
-        every { inputReader.readLine() } returns "1" andThen "2"
-        every { inputReader.readLine() } returns "2" andThen "2"
+        every { inputReader.readLine() } returns "2" andThen "1 2" andThen "2 2"
 
-        game.askShipInfo()
+        game.initializeShip(1)
 
-        verify(exactly = 5) { inputReader.readLine() }
+        verify(exactly = 3) { inputReader.readLine() }
     }
 
     @Test
     fun `should return list of ship using ship info`() {
-        every { inputReader.readLine() } returns "2"
-        every { inputReader.readLine() } returns "1" andThen "2"
-        every { inputReader.readLine() } returns "2" andThen "2"
+        every { inputReader.readLine() } returns "2" andThen "1 2" andThen "2 2"
 
-        val ships = game.askShipInfo()
+        val ships = game.initializeShip(1)
 
         ships.size shouldBe 2
-        verify(exactly = 5) { inputReader.readLine() }
+        verify(exactly = 3) { inputReader.readLine() }
     }
 
     @Test
